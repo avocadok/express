@@ -1,3 +1,4 @@
+const moment = require ('moment');
 const express = require ('express');
 const app = express();
 const bodyParser = require('body-parser')
@@ -13,7 +14,12 @@ const messageList = [];
 
 app.post('/api/messages', (req, res) => {
 	res.send('ok');
-	messageList.push(req.body);
+
+	const message = req.body;
+
+	message.date = moment().format('HH:MM');
+
+	messageList.push(message);
 });
 
 app.get('/api/messages', (req, res) => {
