@@ -1,13 +1,25 @@
 const express = require ('express');
 const app = express();
+const bodyParser = require('body-parser')
 const port = 3000;
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', (req,res) => {
-	res.send('OK')
-})
+app.use(bodyParser.json())
 
+const messageList = [];
+
+
+
+app.post('/api/messages', (req, res) => {
+	res.send('ok');
+	messageList.push(req.body);
+	console.log(req.body);
+});
+
+app.get('/api/messages', (req, res) => {
+	res.send(messageList)
+})
 
 
 
