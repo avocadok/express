@@ -14,7 +14,6 @@ const messageList = [];
 app.post('/api/messages', (req, res) => {
 	res.send('ok');
 	messageList.push(req.body);
-	console.log(req.body);
 });
 
 app.get('/api/messages', (req, res) => {

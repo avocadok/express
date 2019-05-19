@@ -17,6 +17,10 @@ button.addEventListener('click', () => {
 		})
 	})
 
+})
+
+setInterval(() => {
+
 	fetch('/api/messages')
 		.then(response => response.json())
 		.then(messageList => {
@@ -26,4 +30,4 @@ button.addEventListener('click', () => {
 
 			messageListElement.innerHTML = html;
 		})
-})
+}, 1000)
