@@ -17,7 +17,7 @@ app.post('/api/messages', (req, res) => {
 
 	const message = req.body;
 
-	message.date = moment().format('HH:MM');
+	message.date = moment().format('HH:mm');
 
 	messageList.push(message);
 });
