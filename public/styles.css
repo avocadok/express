@@ -1,0 +1,16 @@
+body {
+	font-family: sans-serif;
+}
+
+.message-list {
+	height: 50vh;
+	overflow-y: scroll;
+}
+
+.date {
+	color: silver;
+}
+
+.author {
+	color: gray;
+}

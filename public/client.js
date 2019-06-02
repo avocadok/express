@@ -6,7 +6,7 @@ const messageListElement =
 
 const authorInput = document.querySelector(".message-author");
 
-button.addEventListener('click', () => {
+function sendMessage() {
 	const content = input.value;
 	const author = authorInput.value;
 
@@ -21,23 +21,32 @@ button.addEventListener('click', () => {
 		})
 	})
 
+	input.value = '';
+}
+
+button.addEventListener('click', sendMessage)
+
+input.addEventListener('keydown', event => {
+	if (event.key === 'Enter') {
+		sendMessage()
+	}
 })
 
 setInterval(() => {
-
 	fetch('/api/messages')
 		.then(response => response.json())
 		.then(messageList => {
 			const html = messageList.map(msg =>
 				`
 				<div class="message">
-					<span class="author">${msg.author}</span>
-					<span class="date">${msg.date}</span>:
+					<span class="date">(${msg.date})</span>
+					<span class="author">${msg.author}</span>:
 					${msg.content}
 				</div>
 				`
 			).join('\n');
 
 			messageListElement.innerHTML = html;
+			messageListElement.scrollTop = messageListElement.scrollHeight;
 		})
 }, 1000)
