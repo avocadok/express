@@ -1,10 +1,28 @@
 body {
 	font-family: sans-serif;
+	margin:0;
 }
 
 .message-list {
-	height: 50vh;
-	overflow-y: scroll;
+	height: calc(100vh - 45px);
+    overflow-y: scroll;
+    background-image: url(/pattern.jpg);
+    background-size: cover;
+}
+
+.message-author,
+.message-input,
+.message-send {
+	font-size: 16px;
+}
+
+.message-author,
+.message-input {
+	box-shadow: inset 2px 2px 5px silver;
+}
+
+.message-send {
+	box-shadow: 2px 2px 5px silver;
 }
 
 .date {
@@ -13,4 +31,35 @@ body {
 
 .author {
 	color: gray;
+}
+
+.wrap {
+	display: block;
+}
+
+.wrap.my {
+	text-align: right;
+}
+
+.wrap.my .message {
+	background-color: #e0ffe8;
+}
+
+.message {
+	display: inline-block;
+	background-color: #e0e8ff;
+	margin: 5px;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.bottom {
+	position: absolute;
+    bottom: 5px;
+    height: 30px;
+    left: 10px;
+    right: 0;
+    font-size: 12px;
+    line-height: 30px;
+   	/*background-image: url(/pattern2.jpg);*/
 }

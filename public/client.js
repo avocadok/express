@@ -8,7 +8,13 @@ const authorInput = document.querySelector(".message-author");
 
 function sendMessage() {
 	const content = input.value;
+	if (content === "") {
+		return;
+	}
 	const author = authorInput.value;
+	if (author === "") {
+		return;
+	}
 
 	fetch('/api/messages', {
 		method: 'POST',
@@ -38,10 +44,12 @@ setInterval(() => {
 		.then(messageList => {
 			const html = messageList.map(msg =>
 				`
-				<div class="message">
-					<span class="date">(${msg.date})</span>
-					<span class="author">${msg.author}</span>:
-					${msg.content}
+				<div class="wrap ${msg.author === authorInput.value ? 'my' : ''}">
+					<div class="message">
+						<span class="date">(${msg.date})</span>
+						<span class="author">${msg.author}</span>:
+						${msg.content}
+					</div>
 				</div>
 				`
 			).join('\n');
@@ -49,4 +57,4 @@ setInterval(() => {
 			messageListElement.innerHTML = html;
 			messageListElement.scrollTop = messageListElement.scrollHeight;
 		})
-}, 1000)
+}, 3000)

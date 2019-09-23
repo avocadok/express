@@ -24,6 +24,10 @@ app.post('/api/messages', (req, res) => {
 
 app.get('/api/messages', (req, res) => {
 	res.send(messageList)
+});
+
+app.get("*", function(req, res) {
+	res.status(404).send("Error! That route doesn't exist. You are lost")
 })
 
 
